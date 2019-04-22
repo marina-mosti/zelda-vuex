@@ -8,7 +8,6 @@
           <Heart />
           <Heart />
           <Heart />
-          <Heart empty />
         </div>
       </div>
 
