@@ -2,9 +2,12 @@
   <div id="app">
     <UI>
       <div class="screen">
-        <div class="old-man-container">
-          <p class="old-man-text">IT'S DANGEROUS TO GO ALONE, TAKE THIS!</p>
-          <OldMan />
+        <OldManContainer />
+
+        <div>
+          <ItemButton image="full-heart" />
+          <ItemButton image="empty-heart" />
+          <ItemButton image="stalfos" />
         </div>
 
         <Link />
@@ -15,15 +18,17 @@
 
 <script>
 import UI from './components/UI'
-import OldMan from './components/OldMan'
+import OldManContainer from './components/OldManContainer'
 import Link from './components/Link'
+import ItemButton from './components/ItemButton'
 
 export default {
   name: 'app',
   components: {
-    OldMan,
     Link,
-    UI
+    UI,
+    OldManContainer,
+    ItemButton
   }
 }
 </script>
@@ -52,18 +57,5 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-.old-man-text {
-  color: white;
-  text-align: center;
-  font-size: 30px;
-  letter-spacing: 8px;
-}
-
-.old-man-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 </style>
