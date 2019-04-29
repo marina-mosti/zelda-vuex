@@ -5,8 +5,8 @@
         <OldManContainer />
 
         <div>
-          <ItemButton image="full-heart" />
-          <ItemButton image="empty-heart" />
+          <ItemButton image="full-heart" @click="increaseHealth(2)" />
+          <ItemButton image="empty-heart" @click="increaseHeartContainers" />
           <ItemButton image="stalfos" />
         </div>
 
@@ -22,6 +22,8 @@ import OldManContainer from './components/OldManContainer'
 import Link from './components/Link'
 import ItemButton from './components/ItemButton'
 
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'app',
   components: {
@@ -29,6 +31,12 @@ export default {
     UI,
     OldManContainer,
     ItemButton
+  },
+  methods: {
+    ...mapMutations([
+      'increaseHealth', // Dont worry, it will also add the param that were passing on the click
+      'increaseHeartContainers'
+    ])
   }
 }
 </script>

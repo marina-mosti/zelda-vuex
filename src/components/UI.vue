@@ -5,9 +5,11 @@
       <div class="life">
         <p>- LIFE -</p>
         <div class="hearts">
-          <Heart />
-          <Heart />
-          <Heart />
+          <Heart
+            v-for="container in $store.state.link.heartContainers"
+            :key="`container-${container}`"
+            :empty="container > $store.state.link.currentHealth"
+          />
         </div>
       </div>
 
