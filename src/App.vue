@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <UI>
-      <div class="screen">
+      <div class="screen" v-if="!$store.getters.isGameOver">
         <OldManContainer />
 
         <div>
           <ItemButton image="full-heart" @click="increaseHealth(2)" />
           <ItemButton image="empty-heart" @click="increaseHeartContainers" />
-          <ItemButton image="stalfos" />
+          <ItemButton image="stalfos" @click="stalfosAttack(1,3)" />
         </div>
 
         <Link />
+      </div>
+
+      <div class="game-over" v-else>
+        <p>Game Over</p>
       </div>
     </UI>
   </div>
@@ -36,7 +40,13 @@ export default {
     ...mapMutations([
       'increaseHealth', // Dont worry, it will also add the param that were passing on the click
       'increaseHeartContainers'
-    ])
+    ]),
+    stalfosAttack (min, max) {
+      this.$store.dispatch('stalfosAttack', {
+        minDmg: min,
+        maxDmg: max
+      })
+    }
   }
 }
 </script>
@@ -65,5 +75,16 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.game-over {
+  color: white;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  letter-spacing: 8px;
 }
 </style>
